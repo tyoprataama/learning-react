@@ -2,37 +2,53 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.mynama {
+  padding: 3px;
+  font-size: 30px;
+  font-weight: bold;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  color: #0377FF;
+  text-decoration-line: underline;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.blueone{
+  color: #0377FF;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.btn-inc {
+  padding: 10px 40px;
+  font-size: 20px;
+   background-color: white;
+   border: 1px solid #000;
+   cursor: pointer;
+}
+.btn-inc:hover {
+  background-color: #0377FF;
   color: white;
+  transition: all 0.5s ease;
 }
-
-.App-link {
-  color: #61dafb;
+.btn-dec{
+  padding: 10px 40px;
+  font-size: 20px;
+  background-color: white;
+  border: 1px solid #000;
+  cursor: pointer;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.btn-dec:hover{
+  background-color: #0377FF;
+  color: white;
+  transition: all 0.5s ease;
+}
+.count{
+  padding: 2px 20px;
+  font-size: 30px;
+  border: none;
+  margin-right: 5px;
+  margin-left: 5px;
+  border-radius: 15px;
+}
+.btn-wrap{
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
