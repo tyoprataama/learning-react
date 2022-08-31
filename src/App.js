@@ -1,25 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function App() {  
-  // Nama
-  const myName = 'Tyo';
-  const [displayName, setDisplayName] = useState(myName);
-  //  Button increment & decrement
-  const [count, setCount] = useState(0);
-  //  Merubah nama pada sebelumnya menjadi wazowski selama 3 detik
-  function handleClick () {
-    setDisplayName('Wazowski');
-    setTimeout(() => {
-      setDisplayName(myName);
-    }, 3000);
-  }
-  //  Increment & Decrement btn
-  function decrementCount () {
-    setCount(prevCount => prevCount -1)
-  }
-  function incrementCount () {
-    setCount(prevCount => prevCount +1)
-  }
   //  Hover style
   const [isHovering, setIsHovering] = useState(false);
   const handleMouseEnter = () => {
@@ -67,14 +48,39 @@ function App() {
     textDecorationLine: 'underline',
     display: 'inline',
   }
-  const blueOne = {
+  const greenOne = {
     color: 'green',
+  }
+
+
+  // Nama
+  const myName = 'Tyo';
+  const [displayName, setDisplayName] = useState(myName);
+  //  Button increment & decrement
+  const [count, setCount] = useState(0);
+  //  React side effect
+  useEffect(() => {
+    document.title = `You clicked ${count} times`
+  })
+  //  Merubah nama pada sebelumnya menjadi wazowski selama 3 detik
+  function handleClick () {
+    setDisplayName('Wazowski');
+    setTimeout(() => {
+      setDisplayName(myName);
+    }, 3000);
+    setCount(count + 1);
+  }
+  //  Increment & Decrement btn
+  function decrementCount () {
+    setCount(prevCount => prevCount -1)
+  }
+  function incrementCount () {
+    setCount(prevCount => prevCount +1)
   }
   return (
     <div className="App" style={appwrap}>
-      <h1>Hello my name is <button style={mynama} onClick={handleClick}>{displayName}</button></h1>
-      <h1>👇👇👇</h1>
-      <h3>(Click into the name above (<span style={blueOne}>the green one</span>) to change it for 3 second!)</h3>
+      <h1>Hello my name is "<button style={mynama} onClick={handleClick}>{displayName}</button>" 👈 (Click it)</h1>
+      <h3>(You clicked <span style={greenOne}>green name {count} times</span> click again to change it for 3 second!)</h3>
       <h3>Click the button to increase and decrease the number below!</h3>
       <div style={btnWrap}>
       <button style={btnInc} onClick={decrementCount} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>-</button>
