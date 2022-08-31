@@ -1,4 +1,3 @@
-import './App.css';
 import React, { useState } from 'react';
 
 function App() {  
@@ -21,16 +20,66 @@ function App() {
   function incrementCount () {
     setCount(prevCount => prevCount +1)
   }
+  //  Hover style
+  const [isHovering, setIsHovering] = useState(false);
+  const handleMouseEnter = () => {
+    setIsHovering(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+  };
+  //  React Style
+  const btnInc = {
+    padding: '10px 40px',
+    fontSize: '20px',
+    backgroundColor: isHovering ? 'red' : 'white',
+    color: isHovering ? 'white' : 'red',
+    border: '1px solid red',
+    cursor: 'pointer',
+  }
+  const countNum = {
+    padding: '2px 20px',
+    fontSize: '30px',
+    border: 'none',
+    marginRight: '5px',
+    marginLeft: '5px',
+    borderRadius: '15px',
+  }
+  const btnWrap = {
+    display: 'flex',
+    justifyContent: 'center',
+    textAlign: 'center',
+  }
+  const appwrap = {
+    padding: '10px',
+    justifyContent: 'center',
+    textAlign: 'center',
+  }
+  const mynama = {
+    padding: '3px',
+    fontSize: '30px',
+    fontWeight: 'bold',
+    backgroundColor: '#fff',
+    border: 'none',
+    cursor: 'pointer',
+    color: 'green',
+    textDecorationLine: 'underline',
+    display: 'inline',
+  }
+  const blueOne = {
+    color: 'green',
+  }
   return (
-    <div className="App">
-      <h1>Hello my name is <button className='mynama' onClick={handleClick}>{displayName}</button></h1>
+    <div className="App" style={appwrap}>
+      <h1>Hello my name is <button style={mynama} onClick={handleClick}>{displayName}</button></h1>
       <h1>👇👇👇</h1>
-      <h3>(Click into the name above (<span className='blueone'>the blue one</span>) to change it for 3 second!)</h3>
+      <h3>(Click into the name above (<span style={blueOne}>the green one</span>) to change it for 3 second!)</h3>
       <h3>Click the button to increase and decrease the number below!</h3>
-      <div className='btn-wrap'>
-      <button className='btn-dec' onClick={decrementCount}>-</button>
-      <span className='count'>{count}</span>
-      <button className='btn-inc' onClick={incrementCount}>+</button>
+      <div style={btnWrap}>
+      <button style={btnInc} onClick={decrementCount} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>-</button>
+      <span style={countNum}>{count}</span>
+      <button style={btnInc} onClick={incrementCount} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>+</button>
       </div>
     </div>
   );
