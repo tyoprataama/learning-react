@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function App() {  
+function App(props) {  
   //  Hover style
   const [isHovering, setIsHovering] = useState(false);
   const handleMouseEnter = () => {
@@ -54,8 +54,8 @@ function App() {
 
 
   // Nama
-  const myName = 'Tyo';
-  const [displayName, setDisplayName] = useState(myName);
+  // const myName = 'Tyo';
+  const [displayName, setDisplayName] = useState(props.name);
   //  Button increment & decrement
   const [count, setCount] = useState(0);
   //  React side effect
@@ -66,7 +66,7 @@ function App() {
   function handleClick () {
     setDisplayName('Wazowski');
     setTimeout(() => {
-      setDisplayName(myName);
+      setDisplayName(props.name);
     }, 3000);
     setCount(count + 1);
   }
