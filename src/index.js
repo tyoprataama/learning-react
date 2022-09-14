@@ -1,16 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
-import Footer from './Footer';
-
+import App from './components/App';
+import Footer from './components/Footer';
+import Navbar from './components/Navbar';
+import { DarkThemeProvider } from './contexts/ThemeContext';
+// import { DarkLordProvider } from './contexts/ThemeContext';
+// import ThemedBtn from './contexts/ThemeBtn';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App name='Tyo' />
-    <Footer name='Tyo'/>
-  </React.StrictMode>
+
+      <React.StrictMode>
+      <DarkThemeProvider>
+      <Navbar/>
+      <App name='Tyo' />
+      <Footer name='Tyo'/>
+      </DarkThemeProvider>
+      </React.StrictMode>
+
 );
 
 

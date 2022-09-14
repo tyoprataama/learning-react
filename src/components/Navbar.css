@@ -1,0 +1,9 @@
+.nav-container {
+    padding: 1rem;
+    background-color: #FCF8E8;
+    color: #1A4D2E;
+}
+.nav-content {
+    font-size: 25px;
+    font-weight: bold;
+}
