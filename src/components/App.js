@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { darkThemeContext } from '../contexts/ThemeContext';
 import { DarkModeSwitch } from 'react-toggle-dark-mode';
+import FetchUser from './FetchUser';
 
 function App(props) {  
   //  Hover style
@@ -56,6 +57,9 @@ function App(props) {
   const greenOne = {
     color: 'green',
   }
+  const tableAPI = {
+    marginTop: '50px',
+  }
 
   // Nama
   // const myName = 'Tyo';
@@ -66,7 +70,23 @@ function App(props) {
   useEffect(() => {
     document.title = `You clicked ${count} times`
   });
-
+//  Fetch
+ const [users, setUsers] = useState([]);
+  useEffect(() => {
+  fetchUsers();
+}, []);
+ const fetchUsers = async function () {
+   fetch("https://gorest.co.in/public/v2/users")
+     .then((res) => {
+       return res.json();
+     })
+     .then((data) => {
+       return setUsers([...data]);
+     })
+     .catch((e) => {
+       console.error(e);
+     });
+ };
   //  Merubah nama pada sebelumnya menjadi wazowski selama 3 detik
   function handleClick () {
     setDisplayName('Wazowski');
@@ -86,16 +106,20 @@ function App(props) {
     <div className='App' style={appwrap}>
       <DarkModeSwitch onChange={setTurnOn}checked={turnOn} size={80} style={{color: '#FFE9A0'}}/>
       <div style={{ color: mainColor.txt }}>
-      <p>👆 Change Theme 👆</p>
-      <h1>Hello my name is "<button style={mynama} onClick={handleClick}>{displayName}</button>" 👈 (Click it)</h1>
-      <h3>(You clicked <span style={greenOne}>green name {count} times</span> click again to change it for 3 second!)</h3>
-      <h3>Click the button to increase and decrease the number below!</h3>
+        <p>👆 Change Theme 👆</p>
+        <h1>Hello my name is "<button style={mynama} onClick={handleClick}>{displayName}</button>" 👈 (Click it)</h1>
+        <h3>(You clicked <span style={greenOne}>green name {count} times</span> click again to change it for 3 second!)</h3>
+        <h3>Click the button to increase and decrease the number below!</h3>
       <div style={btnWrap}>
-      <button style={btnInc} onClick={decrementCount} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>-</button>
-      <span style={countNum}>{count}</span>
-      <button style={btnInc} onClick={incrementCount} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>+</button>
+        <button style={btnInc} onClick={decrementCount} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>-</button>
+        <span style={countNum}>{count}</span>
+       <button style={btnInc} onClick={incrementCount} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>+</button>
       </div>
-      </div>
+      {/* Fetch API */}
+        <div style={tableAPI}>
+          <FetchUser users={users}/>
+        </div>
+    </div>
     </div>
   );
 }

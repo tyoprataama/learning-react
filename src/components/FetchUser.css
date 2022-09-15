@@ -1,0 +1,42 @@
+.table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.table td,
+.table th {
+    border: 1px solid #1a4d2e;
+    padding: 8px;
+}
+
+
+
+.table tr:hover {
+    background-color: #fcf8e8;
+    color: #000;
+}
+
+.table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #008000;
+    color: white;
+}
+
+.user-btn {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.user-btn button {
+    margin: 0 0.25rem;
+    padding: 1rem 2rem;
+    background-color: #fcf8e8;
+    border: 1px solid #000;
+    cursor: pointer;
+}
+.user-btn button:hover{
+    background-color: #1a4d2e;
+    color: #fff;
+}
