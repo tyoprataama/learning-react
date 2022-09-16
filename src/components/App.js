@@ -2,6 +2,8 @@ import React, { useState, useContext, useEffect } from 'react';
 import { darkThemeContext } from '../contexts/ThemeContext';
 import { DarkModeSwitch } from 'react-toggle-dark-mode';
 import FetchUser from './FetchUser';
+import Form from './Form';
+import FormList from './FormList';
 
 function App(props) {  
   //  Hover style
@@ -60,12 +62,17 @@ function App(props) {
   const tableAPI = {
     marginTop: '50px',
   }
+  const formReact = {
+    marginTop: '50px',
+  }
 
   // Nama
   // const myName = 'Tyo';
   const [displayName, setDisplayName] = useState(props.name);
   //  Button increment & decrement
   const [count, setCount] = useState(0);
+  // React Form
+  const [manualUser, setManualUser] = useState([]);
   //  React side effect
   useEffect(() => {
     document.title = `You clicked ${count} times`
@@ -102,6 +109,9 @@ function App(props) {
   function incrementCount () {
     setCount(prevCount => prevCount +1)
   }
+  function onSaveHandler(user) {
+    setManualUser((prevState) => [user, ...prevState]);
+  };
   return (
     <div className='App' style={appwrap}>
       <DarkModeSwitch onChange={setTurnOn}checked={turnOn} size={80} style={{color: '#FFE9A0'}}/>
@@ -117,7 +127,15 @@ function App(props) {
       </div>
       {/* Fetch API */}
         <div style={tableAPI}>
+          <h3>React API</h3>
           <FetchUser users={users}/>
+        </div>
+        {/* React Form */}
+        <div style={formReact}>
+          <h3>React Form</h3>
+          <Form onSave={onSaveHandler}/>
+          <h3 style={formReact}>React Form List</h3>
+          <FormList user={manualUser}/>
         </div>
     </div>
     </div>
